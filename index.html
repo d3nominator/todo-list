@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>
+            My Webpage
+        </title>
+    </head>
+
+    <body>
+
+        <input id="todo-title" type="text" />
+        <input id="date-picker" type="date" />
+
+        <button onclick="AddToDo()"> Click Me </button>
+        <div id="todo-list">
+             
+        </div>
+
+    <script>
+        // let todos = ['Get groceries','wash car' , 'Make dinner'];
+
+        const todos = [
+            {
+                title : 'Get-groceries',
+                dueDate : '2022-11-04',
+                id : 'id1'
+            },
+            {
+                title : 'Wash-car',
+                dueDate : '2022-10-04',
+                id : 'id2'
+            },
+            {
+                title : 'Make dinner',
+                dueDate : '2022-10-16',
+                id : 'id3'
+            }
+        ];
+
+        render();
+
+        function AddToDo(){
+            document.getElementById('todo-list').innerHTML = '';
+            const textbox = document.getElementById('todo-title');
+            const title = textbox.value;
+            const datePicker = document.getElementById('date-picker');
+            const duedate = datePicker.value;
+
+            const id = new 
+            todos.push(
+                {
+                    title : title,
+                    dueDate : duedate, 
+                    id : id
+                }
+            );
+
+            render();
+        };
+
+        function deletetodo(){
+            console.log('Delete!!');
+        }
+
+
+        function render(){
+            todos.forEach(function (todo) {
+            const element = document.createElement('div');
+            element.innerText = todo.title + ' ' + todo.dueDate;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.style = 'margin-left : 12px';
+            deleteButton.innerText = 'Delete';
+            deleteButton.onclick = deletetodo;
+            element.appendChild(deleteButton);
+
+
+
+            const todoList = document.getElementById("todo-list");
+            todoList.appendChild(element);
+
+            });
+
+        }
+
+
+        
+    </script>
+
+
+    </body>
+
+</html>
+
+
